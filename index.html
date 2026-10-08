@@ -3,43 +3,91 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nebula Blocks – Privacy Policy</title>
+<title>Sudeha – Games</title>
+<meta name="description" content="Sudeha makes mobile games. Play Nebula Blocks, a free slide-and-sort puzzle with no ads.">
+<meta name="theme-color" content="#05070f">
+<link rel="canonical" href="https://sudeha.in/">
+<link rel="icon" href="nebula-blocks/assets/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sudeha – Games">
+<meta property="og:description" content="Mobile games by Sudeha. Play Nebula Blocks, a free puzzle with no ads.">
+<meta property="og:image" content="https://sudeha.in/nebula-blocks/assets/social-card.jpg">
+<meta property="og:url" content="https://sudeha.in/">
 <style>
-  body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; max-width: 720px; margin: 0 auto; padding: 24px 16px 48px; line-height: 1.6; color: #1b1f33; background: #fff; }
-  h1 { font-size: 1.6rem; margin-bottom: 0.2rem; }
-  h2 { font-size: 1.15rem; margin-top: 1.8rem; }
-  .muted { color: #5b6180; }
+  @font-face { font-family: "Fredoka"; src: url("nebula-blocks/assets/Fredoka-Medium.ttf") format("truetype"); font-weight: 500; font-display: swap; }
+  @font-face { font-family: "Fredoka"; src: url("nebula-blocks/assets/Fredoka-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+  :root { --bg-top: #1c1450; --bg-bottom: #05070f; --panel: #141b38; --panel-edge: #2a3466; --text: #f3f5ff; --muted: #a9b0d6; --cyan: #22e3ff; --cyan-deep: #0b8fae; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; color: var(--text); font-family: "Fredoka", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-weight: 500; line-height: 1.55; background: var(--bg-bottom);
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: -1;
+    background:
+      radial-gradient(60vw 50vh at 15% 8%, rgba(122, 43, 217, .45), transparent 70%),
+      radial-gradient(55vw 45vh at 90% 30%, rgba(15, 163, 184, .30), transparent 70%),
+      linear-gradient(var(--bg-top), var(--bg-bottom) 70%);
+  }
+  a { color: var(--cyan); }
+  .wrap { width: min(880px, 100% - 32px); margin-inline: auto; }
+  header { padding: 64px 0 24px; text-align: center; }
+  h1 { font-size: clamp(2.6rem, 9vw, 4.2rem); font-weight: 700; margin: 0; letter-spacing: .02em; }
+  h1 span { color: var(--cyan); }
+  .lead { color: var(--muted); font-size: 1.15rem; margin: 8px 0 0; }
+  h2 { font-size: 1.4rem; font-weight: 700; margin: 44px 0 16px; }
+  .game {
+    display: grid; grid-template-columns: 120px 1fr; gap: 22px; align-items: center; padding: 22px; border-radius: 22px;
+    background: color-mix(in srgb, var(--panel) 88%, transparent); box-shadow: inset 0 0 0 2px var(--panel-edge);
+    text-decoration: none; color: inherit; transition: transform .12s, box-shadow .12s;
+  }
+  .game:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 2px var(--cyan), 0 0 34px rgba(34, 227, 255, .25); }
+  .game img { width: 120px; height: 120px; border-radius: 26px; display: block; }
+  .game h3 { font-size: 1.5rem; font-weight: 700; margin: 0 0 4px; }
+  .game p { margin: 0 0 12px; color: var(--muted); }
+  .button {
+    display: inline-block; padding: 8px 18px; border-radius: 12px; font-weight: 700; color: #04202a;
+    background: linear-gradient(#5cf0ff, var(--cyan) 60%, #12b7d6); box-shadow: 0 4px 0 var(--cyan-deep);
+  }
+  ul.plain { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  ul.plain li { padding: 12px 16px; border-radius: 14px; background: color-mix(in srgb, var(--panel) 70%, transparent); box-shadow: inset 0 0 0 1px var(--panel-edge); }
+  footer { margin-top: 56px; padding: 26px 0 40px; text-align: center; color: var(--muted); font-size: .95rem; border-top: 1px solid var(--panel-edge); }
+  @media (max-width: 560px) { .game { grid-template-columns: 1fr; text-align: center; } .game img { margin-inline: auto; } header { padding-top: 44px; } }
+  @media (prefers-reduced-motion: reduce) { .game { transition: none; } }
 </style>
 </head>
 <body>
-<h1>Nebula Blocks – Privacy Policy</h1>
-<p class="muted">Effective date: 27 September 2026 · Developer: Sudesh Chhipa</p>
 
-<p>This policy explains how the mobile game <strong>Nebula Blocks</strong> (“the game”) handles information.
-In short: the game does not collect, store on a server, or share any personal information.</p>
+<header class="wrap">
+  <h1>Sudeha<span>.</span></h1>
+  <p class="lead">Mobile games that are free to play, with no ads.</p>
+</header>
 
-<h2>Information we collect</h2>
-<p>None. The game has no accounts, no sign-in, no advertising, no analytics and no third-party tracking SDKs,
-and it does not access your contacts, location, camera, microphone or files.</p>
+<main class="wrap">
+  <h2>Games</h2>
+  <a class="game" href="nebula-blocks/">
+    <img src="nebula-blocks/assets/icon-256.png" width="256" height="256" alt="Nebula Blocks icon">
+    <div>
+      <h3>Nebula Blocks</h3>
+      <p>Drag glowing blocks across a crowded board and send each one out through the gate of its own colour. 44 levels, Endless mode and a Daily Challenge.</p>
+      <span class="button">See the game</span>
+    </div>
+  </a>
 
-<h2>Information stored on your device</h2>
-<p>To remember your progress, the game saves a small amount of data <em>only on your device</em>: levels unlocked,
-stars earned, coins, booster counts, your sound setting and your daily-challenge streak. This data never leaves
-your device and is deleted when you uninstall the game or clear its app data.</p>
+  <h2 id="privacy">Privacy policies</h2>
+  <ul class="plain">
+    <li><a href="nebula-blocks/privacy/">Nebula Blocks – Privacy Policy</a></li>
+    <li><a href="sharpmind/privacy-policy.html">Sharpmind – Privacy Policy</a></li>
+    <li><a href="emberdeep/privacy-policy.html">Emberdeep – Privacy Policy</a></li>
+  </ul>
 
-<h2>Network access</h2>
-<p>The game works fully offline and does not send data over the internet.</p>
+  <h2>Contact</h2>
+  <p>Questions or feedback about a game? <a href="https://github.com/sudesh1456/nebula-blocks-privacy/issues">Send a message here.</a></p>
+</main>
 
-<h2>Children</h2>
-<p>The game is suitable for all ages. Because it collects no personal information, it does not knowingly collect
-information from children under 13 (or the equivalent age in your country).</p>
+<footer>
+  <div class="wrap">Sudeha · Jaipur, India</div>
+</footer>
 
-<h2>Changes to this policy</h2>
-<p>If a future version adds features that handle personal information (for example ads or in-app purchases),
-this policy will be updated before that version is released, and the effective date above will change.</p>
-
-<h2>Contact</h2>
-<p>Questions about this policy or the game: please open an issue at
-<a href="https://github.com/sudesh1456/nebula-blocks-privacy/issues">github.com/sudesh1456/nebula-blocks-privacy/issues</a>.</p>
 </body>
 </html>
