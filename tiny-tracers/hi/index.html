@@ -194,17 +194,46 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
   <a class="buy" href="https://rzp.io/rzp/tinytracers">⚡ अभी ख़रीदें</a>
 </div>
 
-<!-- Razorpay Payment Button (₹99, pl_U3j3f6rrlvI9P8): kept off-screen; our orange .buy buttons open its popup on this page.
-     Success → redirect to the thank-you page (set in the Razorpay dashboard). If the script fails to load,
-     the .buy links fall back to the hosted payment page (rzp.io). -->
-<form id="rzpForm" aria-hidden="true" style="position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden"><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_U3j3f6rrlvI9P8" async> </script> </form>
+<!-- Razorpay Standard Checkout: .buy opens the Razorpay popup on this page.
+     Order is created server-side (sudeha-pay.vercel.app/api/order, price fixed there), signature verified by /api/verify,
+     then redirect to the thank-you page. If anything fails, the .buy link falls back to the hosted page (rzp.io). -->
+<script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
 <script>
-document.addEventListener('click', function (e) {
-  var b = e.target.closest && e.target.closest('a.buy');
-  if (!b) return;
-  var rz = document.querySelector('#rzpForm a.PaymentButton, #rzpForm .PaymentButton');
-  if (rz) { e.preventDefault(); rz.click(); }   // open Razorpay popup in place; else follow the rzp.io link
-});
+(function () {
+  var API = 'https://sudeha-pay.vercel.app/api';
+  var THANKS = 'https://sudeha.in/tiny-tracers/thank-you-9c7a966a/';
+  var busy = false;
+  function post(path, body) {
+    return fetch(API + path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || r.status); return j; }); });
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('a.buy');
+    if (!b || !window.Razorpay || !window.fetch) return;   // no script → follow the rzp.io link
+    e.preventDefault();
+    if (busy) return; busy = true;
+    var label = b.innerHTML; b.innerHTML = '⏳ खुल रहा है…';
+    function reset() { busy = false; b.innerHTML = label; }
+    post('/order', { product: 'tiny-tracers', page: location.pathname }).then(function (o) {
+      var rzp = new Razorpay({
+        key: o.key, order_id: o.order_id, amount: o.amount, currency: o.currency,
+        name: o.name, description: o.description, image: 'https://sudeha.in/tiny-tracers/assets/logo-256.jpg',
+        theme: { color: '#f2994a' },
+        notes: { product: 'tiny-tracers' },
+        handler: function (resp) {
+          b.innerHTML = '✅ भुगतान हो गया…';
+          post('/verify', Object.assign({ product: 'tiny-tracers' }, resp))
+            .then(function (v) { location.href = v.redirect || THANKS; })
+            .catch(function () { location.href = THANKS; });   // paid; Razorpay emails the receipt either way
+        },
+        modal: { ondismiss: reset }
+      });
+      rzp.on('payment.failed', function () { /* Razorpay shows the error and lets them retry */ });
+      rzp.open();
+      b.innerHTML = label;
+    }).catch(function () { location.href = b.href; });   // server down → hosted payment page
+  });
+})();
 </script>
 
 <footer><div class="wrap"><a href="../terms/">Terms</a> · <a href="../refund/">Refund policy</a> · <a href="../delivery/">Delivery</a> · <a href="../privacy/">Privacy</a> · <a href="../contact/">Contact</a><br>Tiny Tracers by Sudeha · Jaipur, India · <a href="mailto:support@sudeha.in">support@sudeha.in</a></div></footer>
