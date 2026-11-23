@@ -194,6 +194,19 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
   <a class="buy" href="https://rzp.io/rzp/tinytracers">⚡ अभी ख़रीदें</a>
 </div>
 
+<!-- Razorpay Payment Button (₹99, pl_U3j3f6rrlvI9P8): kept off-screen; our orange .buy buttons open its popup on this page.
+     Success → redirect to the thank-you page (set in the Razorpay dashboard). If the script fails to load,
+     the .buy links fall back to the hosted payment page (rzp.io). -->
+<form id="rzpForm" aria-hidden="true" style="position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden"><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_U3j3f6rrlvI9P8" async> </script> </form>
+<script>
+document.addEventListener('click', function (e) {
+  var b = e.target.closest && e.target.closest('a.buy');
+  if (!b) return;
+  var rz = document.querySelector('#rzpForm a.PaymentButton, #rzpForm .PaymentButton');
+  if (rz) { e.preventDefault(); rz.click(); }   // open Razorpay popup in place; else follow the rzp.io link
+});
+</script>
+
 <footer><div class="wrap"><a href="../terms/">Terms</a> · <a href="../refund/">Refund policy</a> · <a href="../delivery/">Delivery</a> · <a href="../privacy/">Privacy</a> · <a href="../contact/">Contact</a><br>Tiny Tracers by Sudeha · Jaipur, India · <a href="mailto:support@sudeha.in">support@sudeha.in</a></div></footer>
 </body>
 </html>
