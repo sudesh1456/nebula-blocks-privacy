@@ -214,7 +214,8 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
     if (busy) return; busy = true;
     var label = b.innerHTML; b.innerHTML = '⏳ खुल रहा है…';
     function reset() { busy = false; b.innerHTML = label; }
-    post('/order', { product: 'tiny-tracers', page: location.pathname }).then(function (o) {
+    var tc = (location.search.match(/[?&]rs1=([0-9a-f]+)/) || [])[1];   // owner ₹1 test (server checks the code)
+    post('/order', { product: 'tiny-tracers', page: location.pathname, test_code: tc }).then(function (o) {
       var rzp = new Razorpay({
         key: o.key, order_id: o.order_id, amount: o.amount, currency: o.currency,
         name: o.name, description: o.description, image: 'https://sudeha.in/tiny-tracers/assets/logo-256.jpg',
