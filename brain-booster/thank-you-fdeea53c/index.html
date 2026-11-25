@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Thank you! Download Brain Booster</title>
+<link rel="icon" href="../../tiny-tracers/assets/icon-256.png">
+<style>
+  body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:#22264a; background:#fffaf0; line-height:1.6; }
+  .wrap { width:min(640px, 100% - 32px); margin:0 auto; padding:32px 0 48px; text-align:center; }
+  img.m { width:200px; height:auto; border-radius:10px; box-shadow:0 10px 24px rgba(30,40,80,.2); }
+  h1 { font-size:clamp(1.8rem, 6vw, 2.4rem); margin:.4em 0 .2em; color:#2f80ed; }
+  p { color:#5b6180; }
+  .dl { display:inline-flex; flex-direction:column; align-items:center; text-decoration:none; color:#fff; background:#1e9e5a;
+        border-radius:18px; padding:14px 36px; box-shadow:0 6px 0 #14703f; font-weight:800; font-size:1.4rem; margin:14px 0 8px; }
+  .dl small { font-size:.9rem; font-weight:600; }
+  .box { text-align:left; background:#fff; border:1px solid #efe4cf; border-radius:16px; padding:16px 20px; margin-top:22px; }
+  .box h2 { font-size:1.1rem; margin:0 0 6px; }
+  .box ol, .box ul { margin:0; padding-left:20px; color:#22264a; }
+  .help { background:#fff4f3; border:2px solid #f3b7b3; border-radius:16px; padding:16px 20px; margin-top:16px; }
+  a { color:#2f80ed; }
+</style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1795454189254797');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1795454189254797&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
+</head>
+<body>
+<div class="wrap">
+  <img class="m" src="../assets/p-cover.jpg" width="662" height="936" alt="Brain Booster activity book cover">
+  <h1>Thank you! 🎉</h1>
+  <p>Your payment was successful. Your <b>Brain Booster Activity Book</b> is ready.</p>
+
+  <div id="ok" hidden>
+    <a class="dl" id="dl" href="#" download>⬇ Download your PDF <small>230 pages · about 17 MB</small></a>
+    <p style="font-size:.92rem">The PDF saves to your Downloads. On a phone, open it from your Files / Downloads app.</p>
+  </div>
+  <div class="help" id="nolink" hidden>
+    <b>We couldn't load your download link on this page.</b>
+    <p style="margin:.4em 0 0">Please email <a href="mailto:support@sudeha.in">support@sudeha.in</a> with your payment ID <b id="pidtxt"></b> and we'll send the PDF within 24 hours.</p>
+  </div>
+
+  <div class="box">
+    <h2>📌 Save this page</h2>
+    <p style="margin:0">Bookmark this page (the link above is only on this page), or save the PDF on your phone or computer so you always have it.</p>
+  </div>
+
+  <div class="box">
+    <h2>🖨️ How to print</h2>
+    <ol>
+      <li>Open the PDF and choose <b>Print</b>.</li>
+      <li>Choose paper size <b>A4</b> and scale <b>100% / Actual size</b>.</li>
+      <li>Colour or black &amp; white both work.</li>
+    </ol>
+  </div>
+
+  <div class="box">
+    <h2>💡 Tips</h2>
+    <ul>
+      <li>Do 2–3 pages a day. Short, happy sessions work best.</li>
+      <li>Start with the easy pages and let your child pick what to try next.</li>
+      <li>Answers for the puzzles are at the back of the book.</li>
+    </ul>
+  </div>
+
+  <p style="margin-top:24px">Trouble downloading? Email <a href="mailto:support@sudeha.in">support@sudeha.in</a> with your payment ID and we’ll help.</p>
+  <p style="font-size:.85rem">For your own family or classroom only. Please don’t share or resell the file. · <a href="../../tiny-tracers/terms/">Terms</a></p>
+</div>
+<script>
+(function () {
+  var h = new URLSearchParams(location.hash.slice(1));
+  var dl = h.get('dl'), pid = h.get('pid') || '';
+  if (dl && /^[0-9a-f]{20}$/.test(dl)) {
+    document.getElementById('dl').href = 'https://sudeha-pay.vercel.app/dl/' + dl + '/Brain-Booster-Activity-Book.pdf';
+    document.getElementById('ok').hidden = false;
+    var key = 'bb_purchase_' + (pid || 'x');
+    try { if (!localStorage.getItem(key)) { fbq('track','Purchase',{content_name:'Brain Booster Activity Book',content_ids:['brain-booster'],content_type:'product',value:99,currency:'INR'}); localStorage.setItem(key,'1'); } }
+    catch (e) { fbq('track','Purchase',{content_ids:['brain-booster'],value:99,currency:'INR'}); }
+  } else {
+    document.getElementById('pidtxt').textContent = pid ? '(' + pid + ')' : '';
+    document.getElementById('nolink').hidden = false;
+  }
+})();
+</script>
+</body>
+</html>
